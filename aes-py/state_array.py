@@ -12,7 +12,7 @@ def hexconversion(text):
        
         temp.append([hex(ord(text[i]))[2:]])
         temp[i] = int(temp[i][0])
-        print(temp)
+        # print(temp)
 
     return temp
 
@@ -26,8 +26,15 @@ def padd(text,key):
     return text
 
 
-def text2matrix(cipher_array):
-    return "TO be done"
+def hex2matrix(cipher_array):
+    matrix = []
+    temp = []
+    for i in range(0,16,4):
+        temp = cipher_array[i:i+4]
+        matrix.append(temp)
+    return matrix
+
+    
     
 
 
@@ -36,8 +43,9 @@ def interact():
     key = input("Enter Key : ")
     text = padd(text,key)
     cipher_array = hexconversion(text)
-    cypher_matrix = text2matrix(cipher_array)
-    # print(matrix)
+    print("array : ",cipher_array)
+    cypher_matrix = hex2matrix(cipher_array)
+    print("mat : ",cypher_matrix)
 
 if __name__ == "__main__":
     interact() 
