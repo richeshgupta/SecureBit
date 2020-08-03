@@ -11,7 +11,7 @@ def hexconversion(text):
     for i in range(len(text)):
        
         temp.append([hex(ord(text[i]))[2:]])
-        temp[i] = int(temp[i][0])
+        temp[i] = (temp[i][0])
         # print(temp)
 
     return temp
