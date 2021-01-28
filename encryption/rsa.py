@@ -1,5 +1,5 @@
 from math import *
-from random import randint,sample,seed,shuffle
+from random import *
 
 # RSA algo
 # 1. generate 2 prime (p & q) such that p!=q
@@ -17,13 +17,16 @@ def is_prime(number):
 
     return True
 
-def PrimeGenerator():
-    """ Generates prime number between randomised start and end points """
+def PrimeGenerator(length=23):
+    """ Generates prime number between randomised start and end points 
+     args: length of primes you want to juggle with
+     returns: 1 prime number
+     """
     seed()
-    random_range_start = randint(1000,1000000)
+    random_range_start = randint(1000,10000000)
     random_range_end = randint(random_range_start,100000000)
     primes = []
-    length = 2
+    
     for i in range(random_range_start,random_range_end):
         if(is_prime(i)):
             length = length - 1
@@ -31,12 +34,8 @@ def PrimeGenerator():
         else:
             continue
         if(length<=0):
-            # primes= shuffle(primes)
-            return primes
-    
-
-    
-
+            return choice(primes)
+            
 print(PrimeGenerator())
 
 
