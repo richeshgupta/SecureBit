@@ -3,6 +3,12 @@ from random import *
 
 # RSA algo
 # 1. generate 2 prime (p & q) such that p!=q
+# 2. Calculate n = p*q
+# 3. calculate phi(n) = (p-1)*(q-1)
+# 4. choose e such than gcd(e,phi(n))=1 and 1<e<phi(n)
+# 5. Calculate d = e^(-1) % phi(n)
+# 6. Public key - {e,n} and private key - {d,n}
+
 
 
 def is_prime(number):
