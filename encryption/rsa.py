@@ -29,8 +29,8 @@ def PrimeGenerator(length=23):
      returns: 1 prime number
      """
     seed()
-    random_range_start = randint(1000,10000000)
-    random_range_end = randint(random_range_start,100000000)
+    random_range_start = randint(1000,10000)
+    random_range_end = randint(random_range_start,100000)
     primes = []
     
     for i in range(random_range_start,random_range_end):
@@ -51,11 +51,11 @@ def phi(p,q):
     return Multiply(p-1,q-1)
 
 
-def choose_gcd(number):
+def choose_e(number):
     for i in range(2,number,1):
         if( is_prime(i)==True and gcd(i,number)==1):
             return i
-        
+
 def main():
     p = -1
     q = -1
@@ -65,8 +65,11 @@ def main():
     
     n = Multiply(p,q)
     phi_n = phi(p,q)
-    e=choose_gcd(phi_n)
-    d = pow(e,-1)%phi_n
+    e=choose_e(phi_n)
+    
+    
+    k = 2
+    d = (1+(k*phi_n))/e
     print("p : ",p,"q : ",q,"n : ",n,'phin_n',phi_n,"e:",e,"d : ",d)
     return e,n,d,n
 
