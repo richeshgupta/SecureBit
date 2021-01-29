@@ -5,7 +5,7 @@ from random import *
 # 1. generate 2 prime (p & q) such that p!=q
 # 2. Calculate n = p*q
 # 3. calculate phi(n) = (p-1)*(q-1)
-# 4. choose e such than gcd(e,phi(n))=1 and 1<e<phi(n)
+# 4. choose e such than gcd(e,phi(n))=1 and 1<e<phi(n) Requires Mobius function
 # 5. Calculate d = e^(-1) % phi(n)
 # 6. Public key - {e,n} and private key - {d,n}
 
@@ -43,5 +43,39 @@ def PrimeGenerator(length=23):
             return choice(primes)
             
 print(PrimeGenerator())
+
+def Multiply(p,q):
+    return p*q
+
+def phi(p,q):
+    return Multiply(p-1,q-1)
+
+
+def choose_gcd(number):
+    for i in range(2,number,1):
+        if( is_prime(i)==True and gcd(i,number)==1):
+            return i
+        
+def main():
+    p = -1
+    q = -1
+    while(p==q):
+        p = PrimeGenerator()
+        q = PrimeGenerator()
+    
+    n = Multiply(p,q)
+    phi_n = phi(p,q)
+    e=choose_gcd(phi_n)
+    d = pow(e,-1)%phi_n
+    print("p : ",p,"q : ",q,"n : ",n,'phin_n',phi_n,"e:",e,"d : ",d)
+    return e,n,d,n
+
+def GenerateKeys():
+    e,n,d,n = main()
+    # Public keys & Private keys 
+    keys = {'public_keys':[e,n],"private_keys":[d,n]}
+    return keys
+
+print(GenerateKeys())
 
 
