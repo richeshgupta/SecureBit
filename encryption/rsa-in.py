@@ -6,10 +6,10 @@ import libnum
 bits=16
 msg="goodbye"
 
-p = Crypto.Util.number.getPrime(bits, randfunc=get_random_bytes)
-q = Crypto.Util.number.getPrime(bits, randfunc=get_random_bytes)
-#p=9619
-#q=3329
+# p = Crypto.Util.number.getPrime(bits, randfunc=get_random_bytes)
+# q = Crypto.Util.number.getPrime(bits, randfunc=get_random_bytes)
+p=1291
+q=7127
 
 n = p*q
 PHI=(p-1)*(q-1)
