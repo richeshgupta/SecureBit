@@ -107,6 +107,10 @@ def main():
     # d = (1 + (k*phi_n))/e
     # d = int(d)
     print("p : ",p,"q : ",q,"n : ",n,'phin_n',phi_n,"e:",e,"d : ",d)
+    cipher_txt = encryption(12,d,e,n)
+    print('Encrypted Text= ', cipher_txt)
+    txt = decryption(cipher_txt,d,n)
+    print('Decrypted Text= ', txt)
     return e,n,d,n
 
 def GenerateKeys():
@@ -115,6 +119,11 @@ def GenerateKeys():
     keys = {'public_keys':[e,n],"private_keys":[d,n]}
     return keys
 
+def encryption(txt,d,e,n):
+    cipher_txt = (txt**e)%n
+    return cipher_txt
+
+def decryption(cipher_txt,d,n):
+    txt = (cipher_txt**d)%n
+    return txt
 print(GenerateKeys())
-
-
