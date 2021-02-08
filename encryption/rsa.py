@@ -9,7 +9,8 @@ from random import *
 # 5. Calculate d = e^(-1) % phi(n)
 # 6. Public key - {e,n} and private key - {d,n}
 
-
+alpha_dict = {'a':1,'b':2,'c':3,'d':4,'e':5,'f':6,'g':7,'h':8,'i':9,'j':10,'k':11,'l':12,'m':13,'n':14,'o':15,'p':16,'q':17,'r':18,'s':19,'t':20,'u':21,'v':22,'w':23,'x':24,'y':25,'z':26,' ':27}
+key_list = list(alpha_dict.keys())
 
 def is_prime(number):
     """ returns if number is prime or not """
@@ -29,8 +30,8 @@ def PrimeGenerator(length=23):
      returns: 1 prime number
      """
     seed()
-    random_range_start = randint(1000,10000)
-    random_range_end = randint(random_range_start,100000)
+    random_range_start = randint(100,1000)
+    random_range_end = randint(random_range_start,10000)
     primes = []
     
     for i in range(random_range_start,random_range_end):
@@ -88,8 +89,6 @@ def choose_d(a, m):
  
     return x
     
-
-
 def main():
     p = -1
     q = -1
@@ -101,16 +100,34 @@ def main():
     phi_n = phi(p,q)
     e=choose_e(phi_n)
     seed()
-    # k = randint(2,10)
     k = 2
     d = choose_d(e,phi_n)
-    # d = (1 + (k*phi_n))/e
-    # d = int(d)
-    print("p : ",p,"q : ",q,"n : ",n,'phin_n',phi_n,"e:",e,"d : ",d)
-    cipher_txt = encryption(12,d,e,n)
-    print('Encrypted Text= ', cipher_txt)
-    txt = decryption(cipher_txt,d,n)
-    print('Decrypted Text= ', txt)
+    #print("p : ",p,"q : ",q,"n : ",n,'phin_n',phi_n,"e:",e,"d : ",d)
+    string = input('Enter a string= ')
+    print('\n')
+    numeric_list = []
+    cipher_number = []
+    txt = []
+    for i in string:
+        numeric_list = numeric_list + [alpha_dict[i],]
+    for i in numeric_list:
+        cipher_number = cipher_number + [encryption(i,d,e,n),]
+    print('Cipher List= ',cipher_number)
+    print('Encrypted Number= ',end=' ')
+    for i in cipher_number:
+        print(i, end='')
+    print('\n')
+    for i in cipher_number:
+        txt = txt + [decryption(i,d,n),]
+    print('Decrypted List= ',txt)
+    print('Decrypted Number= ',end='')
+    for i in txt:
+        print(i, end='')
+    print('\n')
+    print('Decrypted String= ',end='')
+    for i in numeric_list:
+        print(key_list[i-1],end='')
+    print('\n')
     return e,n,d,n
 
 def GenerateKeys():
