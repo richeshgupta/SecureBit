@@ -177,11 +177,13 @@ hr {
     align-items: center;
     margin-top: 19px;
     bottom: 0;
+    
 }
 
 .chat-box-tray input {
     margin: 0 10px;
-    padding: 6px 2px;
+    padding: 6px 12px;
+    margin-left: 25px;
 }
 
 .chat-box-tray i {
@@ -191,5 +193,5 @@ hr {
 }
 
 .chat-box-tray i:last-of-type {
-    margin-left: 25px;
+    margin-left: 45px;
 }
