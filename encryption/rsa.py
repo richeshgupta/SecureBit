@@ -42,6 +42,7 @@ def PrimeGenerator(length=23):
             continue
         if(length<=0):
             return choice(primes)
+        # return choice(primes)
             
 
 
@@ -102,32 +103,42 @@ def main():
     seed()
     k = 2
     d = choose_d(e,phi_n)
-    #print("p : ",p,"q : ",q,"n : ",n,'phin_n',phi_n,"e:",e,"d : ",d)
+    
     string = input('Enter a string= ')
-    print('\n')
+    print('')
     numeric_list = []
     cipher_number = []
     txt = []
     for i in string:
         numeric_list = numeric_list + [alpha_dict[i],]
+        
     for i in numeric_list:
         cipher_number = cipher_number + [encryption(i,d,e,n),]
+        
     print('Cipher List= ',cipher_number)
     print('Encrypted Number= ',end=' ')
+
     for i in cipher_number:
         print(i, end='')
+
     print('\n')
+
     for i in cipher_number:
         txt = txt + [decryption(i,d,n),]
+
     print('Decrypted List= ',txt)
+
     print('Decrypted Number= ',end='')
+
     for i in txt:
         print(i, end='')
     print('\n')
     print('Decrypted String= ',end='')
+    
     for i in numeric_list:
         print(key_list[i-1],end='')
     print('\n')
+    
     return e,n,d,n
 
 def GenerateKeys():
