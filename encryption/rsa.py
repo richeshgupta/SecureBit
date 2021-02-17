@@ -24,7 +24,7 @@ def is_prime(number):
 
     return True
 
-def PrimeGenerator(length=23):
+def PrimeGenerator(length=13):
     """ Generates prime number between randomised start and end points 
      args: length of primes you want to juggle with
      returns: 1 prime number
@@ -101,7 +101,6 @@ def main():
     phi_n = phi(p,q)
     e=choose_e(phi_n)
     seed()
-    k = 2
     d = choose_d(e,phi_n)
     
     string = input('Enter a string= ')
@@ -148,10 +147,10 @@ def GenerateKeys():
     return keys
 
 def encryption(txt,d,e,n):
-    cipher_txt = (txt**e)%n
+    cipher_txt = (e*txt)%n
     return cipher_txt
 
 def decryption(cipher_txt,d,n):
-    txt = (cipher_txt**d)%n
+    txt = (cipher_txt*d)%n
     return txt
 print(GenerateKeys())
