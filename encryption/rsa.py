@@ -24,7 +24,7 @@ def is_prime(number):
 
     return True
 
-def PrimeGenerator(length=13):
+def PrimeGenerator(length=2):
     """ Generates prime number between randomised start and end points 
      args: length of primes you want to juggle with
      returns: 1 prime number
