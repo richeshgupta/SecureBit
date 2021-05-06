@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 02d284a1919e653762a8e5a6a4faf25259de90f3
 asgiref
 astroid
 autopep8
@@ -20,6 +23,7 @@ jmespath
 lazy-object-proxy
 mccabe
 pillow
+<<<<<<< HEAD
 psycopg2-binary
 pycodestyle
 PyJWT
@@ -57,12 +61,15 @@ jmespath==0.10.0
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
 pillow==8.0.1
+=======
+>>>>>>> 02d284a1919e653762a8e5a6a4faf25259de90f3
 psycopg2-binary
-pycodestyle==2.6.0
-PyJWT==1.7.1
-pylint==2.6.0
-python-dateutil==2.8.1
+pycodestyle
+PyJWT
+pylint
+python-dateutil
 python-decouple
+<<<<<<< HEAD
 pytz==2020.1
 requests==2.24.0
 s3transfer==0.3.3
@@ -73,3 +80,14 @@ typed-ast==1.4.1
 urllib3==1.25.10
 wrapt==1.12.1
 >>>>>>> 6c75867da1cb0119ad84374db36c25ed9c55ae9b
+=======
+pytz
+requests
+s3transfer
+six
+sqlparse
+toml
+typed-ast
+urllib3
+wrapt
+>>>>>>> 02d284a1919e653762a8e5a6a4faf25259de90f3
