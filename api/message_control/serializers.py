@@ -34,10 +34,10 @@ class MessageSerializer(serializers.ModelSerializer):
         from user_control.serializers import UserProfileSerializer
         x = UserProfileSerializer(obj.receiver.user_profile).data
         # print("Receiver Data : ",x)
-        return UserProfileSerializer(obj.receiver.user_profile).data
+        return x
 
     def get_sender_data(self, obj):
         from user_control.serializers import UserProfileSerializer
         x = UserProfileSerializer(obj.sender.user_profile).data
         # print("Sender Data : ",x)
-        return UserProfileSerializer(obj.sender.user_profile).data
+        return x

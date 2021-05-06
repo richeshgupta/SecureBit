@@ -17,6 +17,10 @@ import re
 from django.db.models import Q, Count, Subquery, OuterRef
 
 
+
+
+
+
 def get_random(length):
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=length))
 

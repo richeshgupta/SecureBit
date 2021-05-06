@@ -7,15 +7,20 @@ from django.db.models import Q
 from django.conf import settings
 import requests
 import json
+from encryption.rsa import *
+
 
 
 def handleRequest(serializerData):
+    # msg = serializerData.data.get("message")
+    # print(ExternalEncrypt(msg))
     notification = {
         "message": serializerData.data.get("message"),
         "from": serializerData.data.get("sender"),
         "receiver": serializerData.data.get("receiver").get("id")
     }
-
+    print("Message : ",notification["message"])
+    
     headers = {
         'Content-Type': 'application/json',
     }
@@ -59,6 +64,12 @@ class MessageView(ModelViewSet):
         if str(request.user.id) != str(request.data.get("sender_id", None)):
             raise Exception("only sender can create a message")
 
+
+        # request.data['message'] = ExternalEncrypt(request.data['message'])
+        data = request.data    
+        data["message"] = ExternalEncrypt(data['message'])
+        
+        # print("Create Data :",data)
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
@@ -105,6 +116,7 @@ class MessageView(ModelViewSet):
 class ReadMultipleMessages(APIView):
 
     def post(self, request):
+        print("Data : ",request.data)
         data = request.data.get("message_ids", None)
         Message.objects.filter(id__in=data).update(is_read=True)
         return Response("success")
